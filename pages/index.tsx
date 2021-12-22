@@ -3,30 +3,43 @@ import Head from "next/head";
 import Image from "next/image";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decreaseNum, increaseNum } from "../redux/modules/count";
-// import { RootState } from "../redux/modules";
-// import { decreaseLike, increaseLike } from "../redux/modules/count";
+import styled, { css } from "styled-components";
+// import { decreaseNum, increaseNum } from "../redux/modules/count";
 import styles from "../styles/Home.module.css";
 import { RootState } from "../types/types";
 
+interface StyledCricleProps {
+  color: string;
+  huge: boolean;
+}
+
+const Circle = styled.div<StyledCricleProps>`
+  width: 6rem;
+  height: 6rem;
+  background-color: ${(props) => props.color || "aqua"};
+  border-radius: 50%;
+  ${(props) =>
+    props.huge &&
+    css`
+      width: 10rem;
+      height: 10rem;
+    `}
+`;
+
+const BackgroundTheme = styled.div`
+  width: 100%;
+  height: 100rem;
+  background-color: ${(props) => props.theme.black.backgroundColor};
+`;
+
 const Home: NextPage = () => {
-  const dispatch = useDispatch();
-  const value = useSelector<RootState, number>((state) => state.counter.value);
-
-  const increase = useCallback(() => {
-    dispatch(increaseNum());
-  }, [dispatch]);
-
-  const decrease = useCallback(() => {
-    dispatch(decreaseNum());
-  }, [dispatch]);
-
   return (
-    <div className={styles.container}>
-      <button onClick={increase}>Up</button>
-      <button onClick={decrease}>Down</button>
-      <div>{value}</div>
-    </div>
+    // <div className={styles.container}>
+    <>
+      <BackgroundTheme />
+      <Circle color="red" huge />
+    </>
+    // </div>
   );
 };
 
