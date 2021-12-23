@@ -1,23 +1,22 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 // import { decreaseNum, increaseNum } from "../redux/modules/count";
 import styles from "../styles/Home.module.css";
-import { RootState } from "../types/types";
 
 interface StyledCricleProps {
-  color: string;
   huge: boolean;
 }
 
 const Circle = styled.div<StyledCricleProps>`
   width: 6rem;
   height: 6rem;
-  background-color: ${(props) => props.color || "aqua"};
   border-radius: 50%;
+  ${({ theme }) => {
+    return css`
+      background-color: ${theme.colors.darkCyan || "aqua"};
+    `;
+  }}
+
   ${(props) =>
     props.huge &&
     css`
@@ -26,18 +25,27 @@ const Circle = styled.div<StyledCricleProps>`
     `}
 `;
 
-const BackgroundTheme = styled.div`
+const TestFontSize = styled.div`
   width: 100%;
-  height: 100rem;
-  background-color: ${(props) => props.theme.black.backgroundColor};
+  height: 100%;
 `;
+
+const customP = styled.p``;
 
 const Home: NextPage = () => {
   return (
     // <div className={styles.container}>
     <>
-      <BackgroundTheme />
-      <Circle color="red" huge />
+      <Circle huge />
+      <TestFontSize>
+        <h1>H1 Almost before we knew</h1>
+        <h2>H2 Almost before we knew</h2>
+        <h3>H3 Almost before we knew</h3>
+        <h4>H4 Almost before we knew</h4>
+        <h5>H5 Almost before we knew</h5>
+        <p>P Almost before we knew</p>
+      </TestFontSize>
+      <button>DefaultBtn</button>
     </>
     // </div>
   );
