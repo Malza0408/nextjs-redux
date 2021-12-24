@@ -1,5 +1,5 @@
 import { HYDRATE } from "next-redux-wrapper";
-import { combineReducers } from "redux";
+import { combineReducers } from "../../node_modules/redux";
 import counter from "./count";
 
 const rootReducer = (state: any, action: any) => {
