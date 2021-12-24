@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 // import { decreaseNum, increaseNum } from "../redux/modules/count";
 
 interface StyledCricleProps {
-  huge: boolean;
+  huge?: boolean;
 }
 
 const Circle = styled.div<StyledCricleProps>`
@@ -25,7 +25,13 @@ const Circle = styled.div<StyledCricleProps>`
 `;
 
 const Home: NextPage = () => {
-  return <></>;
+  return (
+    <>
+      <h1>테스트는 성공이에요!</h1>
+      <Circle />
+      <Circle huge />
+    </>
+  );
 };
 
 export default Home;
